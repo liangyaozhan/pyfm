@@ -32,6 +32,7 @@ class Player(object):
 
     def play(self, song):
         self.current_song = song
+        os.system( "/usr/bin/wget -c " + song.url )
         self.player_process = subprocess.Popen(
             self.external_player + [self.current_song.url],
             stdin=subprocess.PIPE)
@@ -44,3 +45,7 @@ class Player(object):
             self.player_process.terminate()
         except:
             pass
+
+
+# 
+
